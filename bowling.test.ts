@@ -15,21 +15,24 @@
 
 import { scoreBowling } from './bowling';
 
-describe('Bowling Score', () => {
-    it('Si tous les lancers échouent, le score doit être de 0.', () => {
+describe('Calcul du score au bowling', () => {
+    it('doit retourner 0 si tous les lancers échouent', () => {
         expect(scoreBowling('--------------------')).toBe(0);
     });
 
-    
-    it('doit obtenir un score de 90 pour une partie composée uniquement de 9 suivis d’un raté.', () => {
-    expect(scoreBowling('9-9-9-9-9-9-9-9-9-9-')).toBe(90);
+    it('doit retourner 90 pour une partie composée uniquement de 9 suivis d’un raté', () => {
+        expect(scoreBowling('9-9-9-9-9-9-9-9-9-9-')).toBe(90);
     });
 
-    it('doit obtenir un score de 150 pour une partie composée uniquement de spares avec 5.', () => {
-    expect(scoreBowling('5/5/5/5/5/5/5/5/5/5/5')).toBe(150);
+    it('doit retourner 150 pour une partie composée uniquement de spares avec 5', () => {
+        expect(scoreBowling('5/5/5/5/5/5/5/5/5/5/5')).toBe(150);
     });
 
-    it('doit obtenir un score de 300 pour une partie parfaite.', () => {
-    expect(scoreBowling('XXXXXXXXXXXX')).toBe(300);
+    it('doit retourner 300 pour une partie parfaite', () => {
+        expect(scoreBowling('XXXXXXXXXXXX')).toBe(300);
+    });
+
+    it('doit correctement calculer le score pour une séquence de lancers aléatoire', () => {
+        expect(scoreBowling('X7/9-X-88/-6XXX81')).toBe(167);
     });
 });
